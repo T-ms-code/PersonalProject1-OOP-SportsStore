@@ -42,7 +42,7 @@ public:
     return pret;
    }
 
-   friend ostream& operator<<(ostream &out, Produs& p){
+   friend ostream& operator<<(ostream &out, const Produs& p){
        out << "Denumire: " << p.denumire;
        out << endl;
        out << "Marime: " << p.marime;
@@ -143,7 +143,7 @@ public:
 
     ~Produs_copil() override= default;
 
-    Produs_copil (const Produs_copil& p): Produs_femeie(p), Produs_barbat(p), elemente_reflectorizante(p.elemente_reflectorizante), imprimeuri_tipice(p.imprimeuri_tipice) {}
+    Produs_copil (const Produs_copil& p): Produs(p), Produs_femeie(p), Produs_barbat(p), elemente_reflectorizante(p.elemente_reflectorizante), imprimeuri_tipice(p.imprimeuri_tipice) {}
 
     Produs_copil& operator=(const Produs_copil& p){
         if(this == &p){return *this;}
@@ -193,7 +193,7 @@ public:
         return *this;
     }
 
-    friend ostream& operator<<(ostream& out, Persoana& p);
+    friend ostream& operator<<(ostream& out,const Persoana& p);
 
     friend istream& operator>>(istream& in, Persoana& p);
 
@@ -201,7 +201,7 @@ public:
 
     virtual void prezentare() = 0;
 };
-ostream& operator<<(ostream &out, Persoana& p){
+ostream& operator<<(ostream &out, const Persoana& p){
     out << "Nume: ";
     out << p.nume << endl;
     out << "Prenume: ";
@@ -228,7 +228,7 @@ public:
 
     Client (const Client& c): Persoana(c) {this->buget = c.buget; this->cos_produse = c.cos_produse;}
 
-    Client& operator= (const Client c){
+    Client& operator= (const Client& c){
         if(this == &c) return *this;
         Persoana::operator=(c);
         this->buget = c.buget; this->cos_produse = c.cos_produse;
@@ -257,7 +257,7 @@ ostream& operator<<(ostream &out, Client& c){
     out << "Buget: ";
     out << c.buget << endl;
     out << "Cos_produse: " << endl <<endl;
-    for(auto& p: c.cos_produse)
+    for(const auto& p: c.cos_produse)
     out << *p << endl;
     return out;
 }
@@ -283,7 +283,7 @@ public:
 
     Angajat (const Angajat& a): Persoana(a) {this->salariu = a.salariu; this->statut = a.statut;}
 
-    Angajat& operator= (const Angajat a){
+    Angajat& operator= (const Angajat& a){
         if(this==&a) return *this;
         Persoana::operator=(a);
         this->salariu = a.salariu; this->statut = a.statut;
