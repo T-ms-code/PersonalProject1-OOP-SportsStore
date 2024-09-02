@@ -257,7 +257,7 @@ ostream& operator<<(ostream &out, Client& c){
     out << "Buget: ";
     out << c.buget << endl;
     out << "Cos_produse: " << endl <<endl;
-    for(auto const & p: c.cos_produse)
+    for(const Produs* p: c.cos_produse)
     out << *p << endl;
     return out;
 }
