@@ -1,7 +1,7 @@
 **Description**  
 An (in console) application for managing a sports clothing store. The application provides an interface for both buyers and sellers.    
 
- **Concepts used**  
+ **Used concepts**  
 1)Classes and Objects  
 2)Encapsulation  
 3)Inheritance  
